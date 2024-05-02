@@ -15,7 +15,7 @@
     margin-right: auto;
 }
 
-.reviews {
+.reviewsection {
     width: 930px;
     height: 400px;
     margin-left: auto;
@@ -87,6 +87,10 @@
     margin-bottom:20px;
 }
 
+.edittext {
+    width: 910px;
+}
+
 .deletebtn {
     margin-right: 10px;
     margin-bottom: 10px;
@@ -101,6 +105,16 @@
 }
 
 .editbtn {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.editdonebtn {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.cancelbtn{
     border: 1px solid transparent;
     background-color: transparent;
 }
