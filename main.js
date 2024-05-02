@@ -56,7 +56,10 @@ function restart(apiUrl, movieCardsContainer) {
         const clickedCard = event.target.closest('.card');
         if (clickedCard) {
             const movieId = clickedCard.dataset.movieId;
-            showMovieId(movieId);
+            // showMovieId(movieId);
+                  // 새창 이동
+                  let link = 'movie_detail.html?id=${id}'
+                  location.href=link;
         }
     });
 });
