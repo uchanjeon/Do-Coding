@@ -46,11 +46,12 @@ let showMovieComments = function (keys, title, list) {
 
             let temp_HTML = `
             <div class="posted">
-                    <div class="idcomment">
+                    <div class="idcomment" id="${key}idcomment">
                         <div class="postedid"> 작성자 : ${value['id']} </div>
-                        <div class="postedcmt"> ${value['cmt']} </div>
+                        <div id="${key}postedcmt" class="postedcmt"> ${value['cmt']} </div>
                     </div>
                     <div class="deletebtn">
+                        <input type="button" class="editbtn" id="${key}edit" value="수정">
                         <input type="button" class="delbtn" id="${key}delete" value="삭제">
                     </div>
                 </div>
@@ -69,17 +70,45 @@ deleteBtn.forEach((delBtn) => {
     delBtn.addEventListener("click", (a) => {
         
         let inputPw = prompt("비밀번호를 입력하세요");
-        let id = a.target.id.substr(0, 13); //버튼의 id에 key값(타임스탬프)을 넣어놓은상태
-        let value = window.localStorage.getItem(id); //버튼에서 가져온 key로 해당 데이터 찾아옴 
+        let key = a.target.id.substr(0, 13); //버튼의 id에 key값(타임스탬프)을 넣어놓은상태
+        let value = window.localStorage.getItem(key); //버튼에서 가져온 key로 해당 데이터 찾아옴 
         let pwValue = JSON.parse(value)["pw"];
 
         //비번 일치여부 확인
         if (pwValue==inputPw) {
-            window.localStorage.removeItem(id);
+            window.localStorage.removeItem(key);
             alert("삭제 완료");
             window.location.reload();
         } else {
             alert("삭제 실패");
+        }
+    })
+})
+
+//수정버튼
+const editBtn = document.querySelectorAll(".editbtn");
+editBtn.forEach((edBtn) => {
+    edBtn.addEventListener("click", (a) => {
+        
+        let inputPw = prompt("비밀번호를 입력하세요");
+        let key = a.target.id.substr(0, 13); //버튼의 id에 key값(타임스탬프)을 넣어놓은상태
+        let value = window.localStorage.getItem(key); //버튼에서 가져온 key로 해당 데이터 찾아옴 
+        let pwValue = JSON.parse(value)["pw"];
+        let cmtValue = JSON.parse(value)["cmt"];
+
+        //비번 일치여부 확인
+        if (pwValue==inputPw) {
+            let text = document.getElementById(key+"postedcmt");
+            text.style="display:none";
+            //window.localStorage.removeItem(id);
+            let tempHTML = `
+            <textarea type="text" class="edittextbox" id=${key}edittext">${cmtValue}</textarea>
+            `
+            document.getElementById(key+"idcomment").innerHTML+=tempHTML;
+            //alert("수정 완료");
+            //window.location.reload();
+        } else {
+            alert("비밀번호 확인 실패");
         }
     })
 })
