@@ -24,12 +24,12 @@ loginButton.addEventListener("click", () => {
         alert("비밀번호는 4자 이상 입력해주세요");
         return;
     }
-    //영화의ID 유효성 검사
+    //영화의ID 유효성 검사 삭제예정이지만 test할때 입력안하면 댓글안생겨서 해봤음
     if (!mvCode||!"frozen") {
         alert("영화 제목을 바르게 입력해주세요")
         return;
     }
-    //comment 유효성 검사 삭제예정이지만 test할때 입력안하면 댓글안생겨서 해봤음
+    //comment 유효성 검사 
     if (!comment) {
         alert("댓글을 입력해주세요.");
         return;
