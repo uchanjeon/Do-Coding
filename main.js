@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = '5de1d12aba74214884d2a9132966a1b8';
     const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${apiKey}`;
@@ -58,7 +59,7 @@ function restart(apiUrl, movieCardsContainer) {
             const movieId = clickedCard.dataset.movieId;
             // showMovieId(movieId);
                   // 새창 이동
-                  let link = 'movie_detail.html?id=${id}'
+                  let link = 'movie_detail.html``' //?id=${id}
                   location.href=link;
         }
     });

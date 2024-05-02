@@ -1,0 +1,38 @@
+* {
+    font-family: "Do Hyeon", sans-serif;
+}
+
+.homebox {
+    text-align: right;
+    width: 20%;
+    float: right;
+}
+.home {
+    font-size: 25px;
+    width: 20%;
+    height: 50px;
+
+}
+
+.movie_title {
+
+    font-size: 50px;
+    width: 200px;
+    height: 70px;
+    margin: 0px 0px 0px 100px;
+    padding-top: 50px;
+}
+
+.moviebox {
+
+    display: flex;
+    margin-top: 20px;
+}
+
+.movie_image {
+
+    width: 35%;
+}
+.movie_info {
+    width: 70%;
+}
