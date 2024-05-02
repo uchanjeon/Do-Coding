@@ -1,5 +1,7 @@
+
+
 // 영화 카드 생성 함수
-function createMovieCard(movie) {
+ function createMovieCard(movie) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.dataset.movieId = movie.id;
