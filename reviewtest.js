@@ -4,7 +4,7 @@ const pwElement = document.getElementById("pw");
 const movieCode = document.getElementById("moviecode");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
-let i = 0;
+
 
 
 //확인버튼 클릭 > local storage에 저장
@@ -58,11 +58,13 @@ review.forEach((i) => {
 })
 
 
-const frozen = document.getElementById("frozen");
+
 
 //localStorage 데이터 key값을 key라는 변수에 저장, 정렬
 const keys = Object.keys(window.localStorage);
 keys.sort((a, b) => { return (a - b) });
+
+const reviewcode = document.getElementById("frozen");
 
 //데이터 받아와서 댓글 보여주기
 let showMovieComments = function (keys, title, list) {
@@ -96,10 +98,9 @@ let showMovieComments = function (keys, title, list) {
     document.querySelectorAll(".editdonebtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".cancelbtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".edittextbox").forEach((a) => { a.style = "display:none"; });
-    
-
 };
-showMovieComments(keys, "frozen", frozen);
+
+showMovieComments(keys, "frozen", reviewcode);
 
 
 //삭제버튼
