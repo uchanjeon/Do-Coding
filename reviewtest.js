@@ -102,31 +102,39 @@ let showMovieComments = function (keys, title, list) {
 showMovieComments(keys, "frozen", reviewcode);
 
 
-//삭제버튼
+//삭제버튼  prompt()에서는 input내용을 가리지 못해서 클릭시 팝업 레이어를 불러오게 변경
 const deleteBtn = document.querySelectorAll(".delbtn");
 deleteBtn.forEach((delBtn) => {
     delBtn.addEventListener("click", (a) => {
-
-        let inputPw = prompt("비밀번호를 입력하세요");
-        let key = a.target.id.substr(0, 13); //버튼의 id에 key값(타임스탬프)을 넣어놓은상태
-        let value = window.localStorage.getItem(key); //버튼에서 가져온 key로 해당 데이터 찾아옴 
+        let key = a.target.id.substr(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
+        let value = window.localStorage.getItem(key); // 버튼에서 가져온 key로 해당 데이터 찾아옴 
         let pwValue = JSON.parse(value)["pw"];
 
-        // 삭제하기 전에 한 번 더 확인
-        let confirmDelete = confirm("확인을 누르면 삭제가 완료됩니다.");
-        if (!confirmDelete) {
-            return;
-        }
-        //비번 일치여부 확인
-        if (pwValue == inputPw) {
-            window.localStorage.removeItem(key);
-            alert("삭제 완료");
-            window.location.reload();
-        } else {
-            alert("삭제 실패");
-        }
-    })
-})
+        document.getElementById("passwordPopup").style.display = "block";
+
+        // .delbtn 버튼 클릭 시 팝업레이어를 불러옴
+        document.getElementById("passwordSubmit").addEventListener("click", () => {
+            // 입력한 비밀번호를 가져옴
+            let inputPw = document.getElementById("passwordInput").value;
+            // 입력한 비밀번호와 저장된 비밀번호를 비교하여 일치할 경우에만 삭제 기능 실행
+            if (pwValue == inputPw) {
+                // 삭제하기 전에 한번 더 확인
+                let confirmDelete = confirm("확인을 누르면 삭제가 완료됩니다.");
+                if (confirmDelete) {
+                    window.localStorage.removeItem(key);
+                    alert("삭제 완료");
+                    window.location.reload();
+                }
+            } else {
+                alert("비밀번호가 일치하지 않습니다.");
+            }
+        });
+    });
+});
+// 닫기 버튼 클릭 시 팝업 레이어 닫기
+document.getElementById("closePopup").addEventListener("click", function () {
+    document.getElementById("passwordPopup").style.display = "none";
+});
 
 //수정버튼
 const editBtn = document.querySelectorAll(".editbtn");
@@ -200,6 +208,4 @@ let clickCancelBtn = function (key) {
         document.getElementById(key + "pwforedit").style = "display:none";
     })
 }
-
-
 
