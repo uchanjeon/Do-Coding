@@ -185,9 +185,7 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
         } else {
             alert("수정 실패");
         }
-
     })
-
 }
 
 //수정취소 버튼 함수
