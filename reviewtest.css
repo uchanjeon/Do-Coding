@@ -47,9 +47,14 @@
     align-items: end;
 }
 
+.reviewheader {
+    width: 930px;
+}
+
 .comment {
     width: 925px;
     height: 100px;
+    margin: auto auto auto auto;
     border: 1px solid rgba(0, 0, 0, 0.281);
 }
 
