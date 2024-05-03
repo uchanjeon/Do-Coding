@@ -12,7 +12,7 @@ loginButton.addEventListener("click", () => {
     id = idElement.value.trim();
     pw = pwElement.value.trim();
     comment = commentElement.value.trim();
-    mvCode = movieCode.value.trim();
+    //mvCode = movieCode.value.trim();
     // Id 유효성 검사
     if (!id) {
         alert("아이디를 입력해주세요.");
@@ -25,10 +25,10 @@ loginButton.addEventListener("click", () => {
         return;
     }
     //영화의ID 유효성 검사 삭제예정이지만 test할때 입력안하면 댓글안생겨서 해봤음
-    if (!mvCode || !"frozen") {
-        alert("영화 제목을 바르게 입력해주세요")
-        return;
-    }
+    // if (!mvCode || !"frozen") {
+    //     alert("영화 제목을 바르게 입력해주세요")
+    //     return;
+    // }
     //comment 유효성 검사 
     if (!comment) {
         alert("댓글을 입력해주세요.");
@@ -38,7 +38,7 @@ loginButton.addEventListener("click", () => {
     let userInfo = {
         id: id,
         pw: pw,
-        mv: mvCode,
+        mv: "frozen",
         cmt: comment
     };
     const time = Number(Date.now());

@@ -25,22 +25,46 @@
     align-items: center;
 }
 
-.idpw {
-    width: 930px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-
+.reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
 }
 
-.inputgroup {
-    width: 300px;
+#id {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 98%;
     height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.281);
     border-radius: 0;
+    justify-self: start;
+}
+
+#pw {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    width: 98%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.281);
+    border-radius: 0;
+    justify-self: center;
+}
+
+#stars {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    width: 98%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.281);
+    border-radius: 0;
+    margin-left: 0px;
+    justify-self: end;
 }
 
 .review {
+    grid-column: 1/4;
+    grid-row: 2/2;
     margin-top: 10px;
     display:flex;
     flex-direction: column;
@@ -48,11 +72,11 @@
 }
 
 .reviewheader {
-    width: 930px;
+    width: 100%;
 }
 
 .comment {
-    width: 925px;
+    width: 930px;
     height: 100px;
     margin: auto auto auto auto;
     border: 1px solid rgba(0, 0, 0, 0.281);
@@ -60,7 +84,6 @@
 
 .commentbtn {
     margin-top: 10px;
-    margin-right: 0px;
     height: 30px;
     background-color: transparent;
     border: 1px solid transparent;
@@ -69,12 +92,12 @@
 .postedreview {
     overflow:scroll;
     margin-top: 10px;
-    width: 930px;
+    width: 100%;
     height: 300px;
 }
 
 .posted {
-    width: 930px;
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.281);
     margin-top: 10px;
 }

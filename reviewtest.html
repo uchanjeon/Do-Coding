@@ -21,13 +21,15 @@
         </div>
         <div class="reviewsection">
             <div class="reviews">
-                <div class="enter">
-                    <div class="idpw">
-                        <input class="inputgroup" id="id" type="text" placeholder="닉네임">
-                        <input class="inputgroup" id="pw" type="password" placeholder="비밀번호">
-                        <input class="inputgroup" id="moviecode" type="text" placeholder="영화(삭제예정)">
-                    </div>
-                </div>
+                    <input class="inputgroup" id="id" type="text" placeholder="닉네임">
+                    <input class="inputgroup" id="pw" type="password" placeholder="비밀번호">
+                    <select class="inputgroup" name="별점" id="stars">
+                        <option value="★">★</option>
+                        <option value="★★">★★</option>
+                        <option value="★★★">★★★</option>
+                        <option value="★★★★">★★★★</option>
+                        <option value="★★★★★">★★★★★</option>
+                    </select>
                 <div class="review">
                     <textarea id="comment" type="text" class="comment" placeholder="영화 리뷰"></textarea>
                     <input id="addbtn" class="commentbtn" type="button" value="작성완료"></button>
@@ -44,7 +46,7 @@
                         <button id="passwordSubmit">확인</button>
                         <button id="closePopup">닫기</button>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
     </div>
