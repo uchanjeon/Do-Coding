@@ -31,9 +31,15 @@ loginButton.addEventListener("click", () => {
     //     alert("영화 제목을 바르게 입력해주세요")
     //     return;
     // }
+
     //comment 유효성 검사 
     if (!comment) {
         alert("댓글을 입력해주세요.");
+        return;
+    }
+
+    if (starpoints == "select") {
+        alert("별점을 선택해주세요");
         return;
     }
 
@@ -82,6 +88,7 @@ let showMovieComments = function (keys, title, list) {
                             <div class="postedid"> 작성자 : ${val['id']} </div>
                             <div class="starpoints" id="${key}starpoints"> 별점 : ${val['starpoints']} </div>
                             <select class="editstars" name="별점" id="${key}editstars">
+                                <option value="select" selected>--select--</option>
                                 <option value="★">★</option>
                                 <option value="★★">★★</option>
                                 <option value="★★★">★★★</option>
@@ -89,6 +96,7 @@ let showMovieComments = function (keys, title, list) {
                                 <option value="★★★★★">★★★★★</option>
                             </select>
                         </div>
+                        <hr>
                         <div id="${key}postedcmt" class="postedcmt"> ${val['cmt']} </div>
                         <div class="edittextbox" id="${key}edittext">
                             <textarea type="text" class="edittext" id="${key}editarea">${val['cmt']}</textarea>
@@ -192,10 +200,9 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
 
     document.getElementById(key + "editdone").addEventListener("click", () => {
         let inputPw = document.getElementById(key + "pwforedit").value;
-        if (pwValue == inputPw) {
-            let editedcomment = document.getElementById(key + "editarea").value;
-            let editedstar = document.getElementById(key+"editstars").value;
-            console.log(editedcomment);
+        let editedcomment = document.getElementById(key + "editarea").value;
+        let editedstar = document.getElementById(key + "editstars").value;
+        if ((pwValue == inputPw) && (editedstar!="select")) {
             let userInfo = {
                 id: idValue,
                 pw: pwValue,
@@ -206,8 +213,10 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
             localStorage.setItem(key, JSON.stringify(userInfo));
             alert("수정완료");
             window.location.reload();
+        } else if (editedstar=="select") {
+            alert("별점을 선택해주세요");
         } else {
-            alert("수정 실패");
+            alert("비밀번호가 일치하지 않습니다.");
         }
     })
 }
