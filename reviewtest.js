@@ -1,7 +1,8 @@
 const idElement = document.getElementById("id");
 const commentElement = document.getElementById("comment");
 const pwElement = document.getElementById("pw");
-const movieCode = document.getElementById("moviecode");
+const starPoints = document.getElementById("stars");
+//const movieCode = document.getElementById("moviecode");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
@@ -12,6 +13,7 @@ loginButton.addEventListener("click", () => {
     id = idElement.value.trim();
     pw = pwElement.value.trim();
     comment = commentElement.value.trim();
+    starpoints = starPoints.value;
     //mvCode = movieCode.value.trim();
     // Id 유효성 검사
     if (!id) {
@@ -38,6 +40,7 @@ loginButton.addEventListener("click", () => {
     let userInfo = {
         id: id,
         pw: pw,
+        starpoints: starpoints,
         mv: "frozen",
         cmt: comment
     };
@@ -75,7 +78,17 @@ let showMovieComments = function (keys, title, list) {
             let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
-                        <div class="postedid"> 작성자 : ${val['id']} </div>
+                        <div class="idandstar">
+                            <div class="postedid"> 작성자 : ${val['id']} </div>
+                            <div class="starpoints" id="${key}starpoints"> 별점 : ${val['starpoints']} </div>
+                            <select class="editstars" name="별점" id="${key}editstars">
+                                <option value="★">★</option>
+                                <option value="★★">★★</option>
+                                <option value="★★★">★★★</option>
+                                <option value="★★★★">★★★★</option>
+                                <option value="★★★★★">★★★★★</option>
+                            </select>
+                        </div>
                         <div id="${key}postedcmt" class="postedcmt"> ${val['cmt']} </div>
                         <div class="edittextbox" id="${key}edittext">
                             <textarea type="text" class="edittext" id="${key}editarea">${val['cmt']}</textarea>
@@ -97,6 +110,7 @@ let showMovieComments = function (keys, title, list) {
     document.querySelectorAll(".editdonebtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".cancelbtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".edittextbox").forEach((a) => { a.style = "display:none"; });
+    document.querySelectorAll(".editstars").forEach((a) => { a.style = "display:none"; });
 };
 
 showMovieComments(keys, "frozen", reviewcode);
@@ -165,10 +179,12 @@ let doEdit = function (key) {
     document.getElementById(key + "postedcmt").style = "display:none";
     document.getElementById(key + "edit").style = "display:none";
     document.getElementById(key + "delete").style = "display:none";
+    document.getElementById(key + "starpoints").style = "display:none";
     document.getElementById(key + "editdone").style = "display:";
     document.getElementById(key + "cancel").style = "display:";
     document.getElementById(key + "edittext").style = "display:";
     document.getElementById(key + "pwforedit").style = "display:";
+    document.getElementById(key + "editstars").style = "display:";
 }
 
 //수정완료 버튼 클릭 > localStorage 반영, 새로고침
@@ -177,15 +193,15 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
     document.getElementById(key + "editdone").addEventListener("click", () => {
         let inputPw = document.getElementById(key + "pwforedit").value;
         if (pwValue == inputPw) {
-            let comment = document.getElementById(key + "editarea").value;
-            console.log(comment);
-            let val = localStorage.getItem(key);
-            JSON.parse(val)["cmt"] = comment;
+            let editedcomment = document.getElementById(key + "editarea").value;
+            let editedstar = document.getElementById(key+"editstars").value;
+            console.log(editedcomment);
             let userInfo = {
                 id: idValue,
                 pw: pwValue,
+                starpoints: editedstar,
                 mv: movieValue,
-                cmt: comment
+                cmt: editedcomment
             };
             localStorage.setItem(key, JSON.stringify(userInfo));
             alert("수정완료");
@@ -202,10 +218,12 @@ let clickCancelBtn = function (key) {
         document.getElementById(key + "postedcmt").style = "display:";
         document.getElementById(key + "edit").style = "display:";
         document.getElementById(key + "delete").style = "display:";
+        document.getElementById(key + "starpoints").style = "display:";
         document.getElementById(key + "editdone").style = "display:none";
         document.getElementById(key + "cancel").style = "display:none";
         document.getElementById(key + "edittext").style = "display:none";
         document.getElementById(key + "pwforedit").style = "display:none";
+        document.getElementById(key + "editstars").style = "display:none";
     })
 }
 

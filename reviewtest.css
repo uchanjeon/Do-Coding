@@ -66,7 +66,7 @@
     grid-column: 1/4;
     grid-row: 2/2;
     margin-top: 10px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: end;
 }
@@ -90,7 +90,7 @@
 }
 
 .postedreview {
-    overflow:scroll;
+    overflow: scroll;
     margin-top: 10px;
     width: 100%;
     height: 300px;
@@ -110,16 +110,25 @@
     flex-direction: column;
 }
 
-.postedid {
+.idandstar {
     margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 .postedcmt {
-    width: 910px;
-    margin-bottom:20px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
 }
 
 .edittext {
-    width: 910px;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
 }
 
 .deletebtn {
@@ -145,7 +154,7 @@
     background-color: transparent;
 }
 
-.cancelbtn{
+.cancelbtn {
     border: 1px solid transparent;
     background-color: transparent;
 }
@@ -162,17 +171,19 @@
 }
 
 .popup-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-    #passwordPopup h1 {
-        font-size: 20px; 
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#passwordPopup h1 {
+    font-size: 20px;
+}
+
 #passwordInput {
     padding: 5px;
     font-size: 14px;
