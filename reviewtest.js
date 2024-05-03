@@ -14,7 +14,7 @@ loginButton.addEventListener("click", () => {
     comment = commentElement.value.trim();
     mvCode = movieCode.value.trim();
     // Id 유효성 검사
-    if (!id ) {
+    if (!id) {
         alert("아이디를 입력해주세요.");
         return;
     }
@@ -25,7 +25,7 @@ loginButton.addEventListener("click", () => {
         return;
     }
     //영화의ID 유효성 검사 삭제예정이지만 test할때 입력안하면 댓글안생겨서 해봤음
-    if (!mvCode||!"frozen") {
+    if (!mvCode || !"frozen") {
         alert("영화 제목을 바르게 입력해주세요")
         return;
     }
@@ -58,8 +58,6 @@ review.forEach((i) => {
 })
 
 
-
-
 //localStorage 데이터 key값을 key라는 변수에 저장, 정렬
 const keys = Object.keys(window.localStorage);
 keys.sort((a, b) => { return (a - b) });
@@ -86,6 +84,7 @@ let showMovieComments = function (keys, title, list) {
                     <div class="deletebtn" id="${key}deletebtn">
                         <input type="button" class="editbtn" id="${key}edit" value="수정">
                         <input type="button" class="delbtn" id="${key}delete" value="삭제">
+                        <input type="text" class="pwforedit" id="${key}pwforedit" placeholder="비밀번호">
                         <input type="button" class="editdonebtn" id="${key}editdone" value="완료">
                         <input type="button" class="cancelbtn" id="${key}cancel" value="취소">
                     </div>
@@ -94,7 +93,7 @@ let showMovieComments = function (keys, title, list) {
             list.innerHTML += temp_HTML;
         }
     }
-   
+    document.querySelectorAll(".pwforedit").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".editdonebtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".cancelbtn").forEach((a) => { a.style = "display:none"; });
     document.querySelectorAll(".edittextbox").forEach((a) => { a.style = "display:none"; });
@@ -139,24 +138,19 @@ editBtn.forEach((edBtn) => {
 
 //수정 함수
 let clickEditBtn = function (a) {
-    let inputPw = prompt("비밀번호를 입력하세요");
+
+    //let inputPw = prompt("비밀번호를 입력하세요");
     let key = a.target.id.substr(0, 13); //버튼의 id에 key값(타임스탬프)을 넣어놓은상태
     let value = window.localStorage.getItem(key); //버튼에서 가져온 key로 해당 데이터 찾아옴 
     let idValue = JSON.parse(value)["id"];
     let pwValue = JSON.parse(value)["pw"];
     let movieValue = JSON.parse(value)["mv"];
 
-    //비번 일치여부 확인
-    if (pwValue == inputPw) {
-        doEdit(key);
-        clickEditDoneBtn(key, idValue, pwValue, movieValue);
-        clickCancelBtn(key);
-        //alert("수정 완료");
-        //window.location.reload();
-    } else {
-        alert("비밀번호 확인 실패");
-    }
+    doEdit(key);
+    clickEditDoneBtn(key, idValue, pwValue, movieValue);
+    clickCancelBtn(key);
 }
+
 
 //수정버튼 클릭 시 없어질 요소들과 나타날 요소들
 let doEdit = function (key) {
@@ -166,27 +160,34 @@ let doEdit = function (key) {
     document.getElementById(key + "editdone").style = "display:";
     document.getElementById(key + "cancel").style = "display:";
     document.getElementById(key + "edittext").style = "display:";
+    document.getElementById(key + "pwforedit").style = "display:";
 }
 
 //수정완료 버튼 클릭 > localStorage 반영, 새로고침
 let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
+
     document.getElementById(key + "editdone").addEventListener("click", () => {
-        let comment = document.getElementById(key + "editarea").value;
-        console.log(comment);
-        
-        let val = localStorage.getItem(key);
-        JSON.parse(val)["cmt"] = comment;
-        let userInfo = {
-            id: idValue,
-            pw: pwValue,
-            mv: movieValue,
-            cmt: comment
-        };
-        localStorage.setItem(key, JSON.stringify(userInfo));
-        alert("수정완료");
-        window.location.reload();
+        let inputPw = document.getElementById(key + "pwforedit").value;
+        if (pwValue == inputPw) {
+            let comment = document.getElementById(key + "editarea").value;
+            console.log(comment);
+            let val = localStorage.getItem(key);
+            JSON.parse(val)["cmt"] = comment;
+            let userInfo = {
+                id: idValue,
+                pw: pwValue,
+                mv: movieValue,
+                cmt: comment
+            };
+            localStorage.setItem(key, JSON.stringify(userInfo));
+            alert("수정완료");
+            window.location.reload();
+        } else {
+            alert("수정 실패");
+        }
 
     })
+
 }
 
 //수정취소 버튼 함수
@@ -198,6 +199,7 @@ let clickCancelBtn = function (key) {
         document.getElementById(key + "editdone").style = "display:none";
         document.getElementById(key + "cancel").style = "display:none";
         document.getElementById(key + "edittext").style = "display:none";
+        document.getElementById(key + "pwforedit").style = "display:none";
     })
 }
 
