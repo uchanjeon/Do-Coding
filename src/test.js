@@ -41,11 +41,11 @@ let printMovieCards = (movie) => {
 
 //첫 로드
 let printTitle = function (data) {
-  allData = data;
-  movie = data["results"];
-  searchedMovie = movie;
-  printMovieCards(movie);
-  movieCard = document.querySelectorAll(".cardbtn");
+  allData = data; // 데이터받고 그거 allDate에 저장
+  movie = data["results"]; //데이터의 results를 movie에 저장
+  searchedMovie = movie; //searchedMovie를 일단 movie로 저장= data["results"];
+  printMovieCards(movie); // 카드 로드. movie로
+  movieCard = document.querySelectorAll(".cardbtn"); // cardbtn이라는 클래스 참조를 MovieCard에 저장.
 };
 
 //카드 클릭시 실행할 함수

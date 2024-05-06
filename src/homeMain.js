@@ -1,5 +1,7 @@
 import { fetchMovieData } from "./nowPlayingAPI.js"; //1. API를 가져온다.
 import { createMovieCards } from "./createMovieCards.js"; //2. 영화 카드를 생성한다.
+// import { searchMovieCards } from "./searchMovieCards.js";
+
 // import { searchMovies } from "./search.js"; // 4.
 // 1. API를 가져온다.
 const movies = await fetchMovieData(); //async

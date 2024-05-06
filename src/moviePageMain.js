@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      // const clickedMovieId = localStorage.getItem("clickedidmovie");
-      const urlParams = new URLSearchParams(window.location.search);
-      const clickedMovieId = urlParams.get("id");
+      const clickedMovieId = localStorage.getItem("clickedidmovie");
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const clickedMovieId = urlParams.get("id");
       console.log(clickedMovieId);
       const clickedMovie = data.results.find(
         (movie) => movie.id == clickedMovieId

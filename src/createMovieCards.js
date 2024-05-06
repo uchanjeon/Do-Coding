@@ -12,16 +12,14 @@ export const createMovieCards = async (movies) => {
     .join("");
   cardList.addEventListener("click", clickCard);
 
-  // 이벤트 위임
-  function clickCard({ target }) {
-    if (target === cardList) return; // 카드 외 영역 클릭 시 무시
-    if (target.matches(".movie-card")) {
-      let link = `moviePage.html?id=${target.id}`;
-      location.href = link;
-    } else {
-      // 카드의 자식 태그 (img, h3, p) 클릭 시 부모의 id로 접근
-      let link = `moviePage.html?id=${target.parentNode.id}`;
-      location.href = link;
-    }
+  function clickCard() {
+    document.querySelectorAll(".movie-card").forEach((card) => {
+      card.addEventListener("click", function () {
+        const movieId = card.id;
+        let link = `moviePage.html?id=${movieId}`;
+        localStorage.setItem("clickedidmovie", movieId);
+        location.href = link;
+      });
+    });
   }
 };
