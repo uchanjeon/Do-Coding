@@ -7,6 +7,10 @@
   color: black;
 }
 
+.no_dot {
+  list-style-type: none;
+}
+
 .search {
   font-family: "Do Hyeon", sans-serif;
   height: 80px;
