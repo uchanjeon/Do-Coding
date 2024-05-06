@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style/moviePage.css" />
-    <script type="module" src="./src/moviePageMain.js"></script>
+    <script type="module" src="./src/moviePageMain2.js"></script>
   </head>
 
   <body>
@@ -22,7 +22,22 @@
 
     <div class="main">
       <div class="info" id="bigbox1">
-
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w500${clickedMovie.poster_path}" alt="..." />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">영화제목 : ${clickedMovie.title}</h5>
+                <p class="card-text">영화 평점 : ${clickedMovie.vote_average}</p>
+                <p class="card-text">영화 출시일 : ${clickedMovie.release_date}</p>
+                
+                <p class="card-text">영화 내용 : ${clickedMovie.overview}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <br><br><br><br>
       <div class="reviews">
