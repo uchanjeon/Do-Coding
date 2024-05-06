@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="./style/moviePage.css" />
     <script type="module" src="./src/moviePageMain2.js"></script>
+    <script defer src="./src/reviewtest.js"></script>
   </head>
 
   <body>
@@ -32,7 +33,6 @@
                 <h5 class="card-title">영화제목 : ${clickedMovie.title}</h5>
                 <p class="card-text">영화 평점 : ${clickedMovie.vote_average}</p>
                 <p class="card-text">영화 출시일 : ${clickedMovie.release_date}</p>
-                
                 <p class="card-text">영화 내용 : ${clickedMovie.overview}</p>
               </div>
             </div>
@@ -40,24 +40,36 @@
         </div>
       </div>
       <br><br><br><br>
-      <div class="reviews">
-          <div class="enter">
-              <div class="idpw">
-                  <input class="inputgroup" id="id" type="text" placeholder="닉네임">
-                  <input class="inputgroup" id="pw" type="password" placeholder="비밀번호">
-                  <input class="inputgroup" id="moviecode" type="text" placeholder="영화(삭제예정)">
-              </div>
-          </div>
-          <div class="review">
-              <textarea id="comment" type="text" class="comment" placeholder="영화 리뷰"></textarea>
-              <input id="login-btn" class="commentbtn" type="button" value="작성완료"></button>
-          </div>
-          <div id="frozen" class="postedreview">
-              <h2>frozen 댓글 목록</h2>
-          </div>
-      </div>
-  </div>
-    <ul id="detailInfo"></ul>
-    <!-- <div class="bigbox" id="bigbox1"></div> -->
-  </body>
+      <div class="reviewsection">
+        <div class="reviews">
+                <input class="inputgroup" id="id" type="text" placeholder="닉네임">
+                <input class="inputgroup" id="pw" type="password" placeholder="비밀번호">
+                <select class="inputgroup" name="별점" id="stars">
+                    <option value="select" selected>--select--</option>
+                    <option value="★">★</option>
+                    <option value="★★">★★</option>
+                    <option value="★★★">★★★</option>
+                    <option value="★★★★">★★★★</option>
+                    <option value="★★★★★">★★★★★</option>
+                </select>
+            <div class="review">
+                <textarea id="comment" type="text" class="comment" placeholder="영화 리뷰"></textarea>
+                <input id="addbtn" class="commentbtn" type="button" value="작성완료"></button>
+            </div>
+        </div>
+
+
+        <div id="frozen" class="postedreview">
+            <h2>Review</h2>
+            <div id="passwordPopup" class="pwPopup">
+                <div class="popup-content">
+                    <h1>작성하신 리뷰를 삭제하시겠습니까?</h1>
+                    <input type="password" id="passwordInput" placeholder="비밀번호를 입력하세요">
+                    <button id="passwordSubmit">확인</button>
+                    <button id="closePopup">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>
