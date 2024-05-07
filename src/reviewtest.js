@@ -6,6 +6,8 @@ const starPoints = document.getElementById("stars");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
+
+
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
   id = idElement.value.trim();
@@ -36,6 +38,8 @@ loginButton.addEventListener("click", () => {
     return;
   }
 
+  let movieId = localStorage.getItem("clickedidmovie");
+
   if (starpoints == "select") {
     alert("별점을 선택해주세요");
     return;
@@ -45,7 +49,7 @@ loginButton.addEventListener("click", () => {
     id: id,
     pw: pw,
     starpoints: starpoints,
-    mv: "frozen",
+    mv: movieId,
     cmt: comment,
   };
   const time = Number(Date.now());
@@ -72,12 +76,12 @@ keys.sort((a, b) => {
 const reviewcode = document.getElementById("frozen");
 
 //데이터 받아와서 댓글 보여주기
-let showMovieComments = function (keys, title, list) {
+let showMovieComments = function (keys, list) {
   for (let key of keys) {
     let val = window.localStorage.getItem(key);
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
-    if (val["mv"] == title) {
+    if (val["mv"] == localStorage.getItem("clickedidmovie")) {
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
@@ -128,7 +132,7 @@ let showMovieComments = function (keys, title, list) {
   });
 };
 
-showMovieComments(keys, "frozen", reviewcode);
+showMovieComments(keys, reviewcode);
 
 //삭제버튼  prompt()에서는 input내용을 가리지 못해서 클릭시 팝업 레이어를 불러오게 변경
 const deleteBtn = document.querySelectorAll(".delbtn");
