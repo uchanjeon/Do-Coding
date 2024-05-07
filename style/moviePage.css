@@ -219,3 +219,9 @@
   height: 50px;
   object-fit: cover;
 }
+.Popup_warning {
+  background-color: white;
+}
+.Popup_input {
+  background-color: white;
+}
