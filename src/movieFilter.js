@@ -1,8 +1,14 @@
 export function sortMovies(movies, selectedValue) {
     let sortedMovies = movies.slice(); 
     switch (selectedValue) {
-      case "popular": //인기도순으로 배열
-        sortedMovies.sort((a, b) => b.popularity - a.popularity);
+        case "name": // 이름 순으로 배열
+        sortedMovies.sort((a, b) => {
+            const nameA = a.title.toLowerCase();
+            const nameB = b.title.toLowerCase();
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0;
+        });
         break;
       case "top_rated": // 평점순으로 배열
         sortedMovies.sort((a, b) => b.vote_average - a.vote_average);
