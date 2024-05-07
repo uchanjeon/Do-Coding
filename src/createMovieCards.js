@@ -5,8 +5,8 @@ export const createMovieCards = async (movies) => {
       (movie) => `
           <section class="movie-card" id="${movie.id}">
               <img class="movie-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-              <h3 class="movie-title">영화 제목 : ${movie.title}</h3>
-              <p class="movie-rating">영화 평점 : ${movie.vote_average}</p>
+              <h3 class="movie-title">${movie.title}</h3>
+              <p class="movie-rating">평점 : ${movie.vote_average}</p>
           </section>`
     )
     .join("");
