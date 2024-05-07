@@ -82,11 +82,15 @@ let showMovieComments = function (keys, list) {
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
     if (val["mv"] == localStorage.getItem("clickedidmovie")) {
+      const time = new Date(Number(key));
+      const year = time.getFullYear();
+      const month = time.getMonth() + 1;
+      const day = time.getDate();
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
                         <div class="idandstar">
-                            <div class="postedid"> 작성자 : ${val["id"]} </div>
+                            <div class="postedid"> 작성자 : ${val["id"]}<span style="color: rgb(76, 71, 71)"> /${year}-${month}-${day}</span> </div>
                             <div class="starpoints" id="${key}starpoints"> 별점 : ${val["starpoints"]} </div>
                             <select class="editstars" name="별점" id="${key}editstars">
                                 <option value="select" selected>--select--</option>
