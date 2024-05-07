@@ -1,0 +1,87 @@
+.title {
+  font-family: "Do Hyeon", sans-serif;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.no_dot {
+  list-style-type: none;
+}
+
+.search {
+  font-family: "Do Hyeon", sans-serif;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  color: black;
+}
+
+.search-input {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 25px;
+  margin-left: 10px;
+  height: 30px;
+  color: black;
+  border-color: black;
+}
+
+.search-btn {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 25px;
+  margin-left: 10px;
+  height: 30px;
+  color: black;
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 20%;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: rgba(22, 57, 110, 0.414);
+  color: white;
+}
+* {
+  background-color: rgb(148, 71, 71);
+}
+
+.card {
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+  justify-self: center;
+  background-color: rgba(255, 255, 255, 0.674);
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.card > .movie-img {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+}
+.card > .movie-title {
+  font-size: 25px;
+  margin-bottom: 5px;
+  color: black;
+}
+.card > .movie-content {
+  font-size: 15px;
+  color: black;
+  margin-bottom: 10px;
+}
+.card > .movie-rating {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.movieCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+}
