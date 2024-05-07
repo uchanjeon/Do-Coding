@@ -87,7 +87,7 @@ let showMovieComments = function (keys, list) {
                     <div class="idcomment" id="${key}idcomment">
                         <div class="idandstar">
                             <div class="postedid"> 작성자 : ${val["id"]} </div>
-                            <div class="starpoints" id="${key}starpoints"> 별점 : ${val["starpoints"]} </div>
+                            <div class="starpoints" id="${key}starpoints"> ${val["starpoints"]} </div>
                             <select class="editstars" name="별점" id="${key}editstars">
                                 <option value="select" selected>--select--</option>
                                 <option value="★">★</option>
