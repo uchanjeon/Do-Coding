@@ -76,7 +76,7 @@ keys.sort((a, b) => {
 const reviewcode = document.getElementById("frozen");
 
 //데이터 받아와서 댓글 보여주기
-let showMovieComments = function (keys, title, list) {
+let showMovieComments = function (keys, list) {
   for (let key of keys) {
     let val = window.localStorage.getItem(key);
     val = JSON.parse(val);
@@ -132,7 +132,7 @@ let showMovieComments = function (keys, title, list) {
   });
 };
 
-showMovieComments(keys, "frozen", reviewcode);
+showMovieComments(keys, reviewcode);
 
 //삭제버튼  prompt()에서는 input내용을 가리지 못해서 클릭시 팝업 레이어를 불러오게 변경
 const deleteBtn = document.querySelectorAll(".delbtn");
