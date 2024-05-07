@@ -5,11 +5,9 @@ export function searchMovieCards(searchInput) {
     const title = card.querySelector(".movie-title").textContent.toLowerCase();
     const searchInputLower = searchInput.toLowerCase();
 
-    if (title.includes(searchInputLower)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+    title.includes(searchInputLower)
+      ? (card.style.display = "block")
+      : (card.style.display = "none");
   });
 }
 
