@@ -70,6 +70,7 @@
   padding: 20px;
   border: double 5px;
   grid-gap: 100px;
+  cursor: pointer;
 }
 
 .movie-img {
@@ -83,34 +84,3 @@
   background-color: rgb(216, 167, 158);
   font-size: 1.3em; /* 글자가 너무 작아서 조금 키웠습니다. */
 }
-
-/* .card {
-  width: 500px;
-  margin: 20px;
-  padding: 20px;
-  justify-self: center;
-  background-color: rgba(255, 255, 255, 0.674);
-  border-radius: 10px;
-  cursor: pointer;
-  user-select: none;
-}
-.card > .movie-img {
-  width: 500px;
-  height: auto;
-  border-radius: 10px;
-}
-.card > .movie-title {
-  font-size: 25px;
-  margin-bottom: 5px;
-  color: black;
-}
-.card > .movie-content {
-  font-size: 15px;
-  color: black;
-  margin-bottom: 10px;
-}
-.card > .movie-rating {
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-} */

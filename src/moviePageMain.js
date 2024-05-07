@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       `;
         document.getElementById("bigbox1").innerHTML = temp_html;
-      } else {
+      } else if (clickedMovie === null) {
         console.error("Clicked movie not found in the movie list");
       }
     })
