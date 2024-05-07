@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${apiKey}`;
 
   fetch(apiUrl)
-    .then(response => response.json())
+    .then((response) => response.json())
     .then((data) => {
       const clickedMovieId = localStorage.getItem("clickedidmovie");
       // const urlParams = new URLSearchParams(window.location.search);
@@ -15,22 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (clickedMovie) {
         const temp_html = `
-        <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w500${clickedMovie.poster_path}" alt="..." />
+        <div class="movieInfo">
+          <div class="imagesection">
+            <img class="image" src="https://image.tmdb.org/t/p/w500${clickedMovie.poster_path}" alt="..." />
           </div>
-          <div class="col-md-8">
+          <div class="infotext">
             <div class="card-body">
-              <h3 class="card-title">영화제목 : ${clickedMovie.title}</h3>
-              <p class="card-text">영화 평점 : ${clickedMovie.vote_average}</p>
-              <p class="card-text">영화 출시일 : ${clickedMovie.release_date}</p>
-              
-              <p class="card-text">영화 내용 : ${clickedMovie.overview}</p>
+              <h3 class="card-title">${clickedMovie.title}</h3>
+              <p class="card-text">${clickedMovie.release_date}</p>
+              <p class="card-text"> 평점 : ${clickedMovie.vote_average}</p>
+              <p class="card-text">${clickedMovie.overview}</p>
             </div>
           </div>
         </div>
-      </div>
       `;
         document.getElementById("bigbox1").innerHTML = temp_html;
       } else {
@@ -42,3 +39,38 @@ document.addEventListener("DOMContentLoaded", function () {
       a;
     });
 });
+
+
+//추가기능 - 출연진 / 예매하기 기능 다른 api에서 받아오기
+async function fetchMovieData() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmFmYTFlODI1OGYwZDc3MWEwMzRjOWM3OTNiNjgzMCIsInN1YiI6IjY2MjZmZDQ4MTc2YTk0MDE3ZjgxMmVjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NKjXh9Bx4UxPLwQzr6nBDrLrSEAQm89Mqcv8XlKgXms",
+    },
+  };
+
+  const clickedMovieId = localStorage.getItem("clickedidmovie");
+  let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-en`
+
+  fetch(address, options)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      moveToReserve(data);
+
+
+
+    })
+}
+
+let moveToReserve = (data) => {
+  document.querySelector("#reserve").addEventListener('click', () => {
+    location.href=data['homepage'];
+  });
+}
+
+fetchMovieData();
+

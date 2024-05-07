@@ -1,5 +1,51 @@
-* {
+/* * {
   background-color: rgb(148, 71, 71);
+}*/
+body {
+  background-color: rgb(148, 71, 71);
+}
+
+select {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+textarea {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.center {
+  width: 1000px;
+  background-color: antiquewhite;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: 35px 465px 465px 35px;
+}
+
+.homebox {
+  grid-column: 2/3;
+  align-self: center;
+  justify-self: start;
+}
+
+.mvBtn {
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+}
+
+.mvInfoBtn {
+  font-size: 15pt;
 }
 
 .main {
@@ -7,17 +53,53 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
   margin: auto auto auto auto;
 }
 
 .info {
-  background-color: yellow;
   width: 930px;
   height: 400px;
   margin-left: auto;
   margin-right: auto;
 }
+
+.movieInfo {
+  margin-top: 30px;
+  width: 930px;
+  height: 350px;
+  display: grid;
+  grid-template-columns: 1fr 2.7fr;
+  column-gap: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.205);
+}
+
+.imagesection {
+  grid-column: 1/2;
+  height: 330px;
+  align-self: center;
+  justify-self: center;
+}
+
+.image {
+  height: 330px;
+}
+
+.infotext {
+  grid-template-columns: 2/3;
+}
+
+.card-title {
+  font-size: 18pt;
+  margin-top: 15px;
+}
+
+.card-text {
+  margin-top: 10px;
+  font-size: 13pt;
+}
+
+
+
 
 .reviewsection {
   width: 930px;
@@ -101,7 +183,7 @@
 }
 
 .posted {
-  width: 100%;
+  width: 95%;
   border: 1px solid rgba(0, 0, 0, 0.281);
   margin-top: 10px;
 }
