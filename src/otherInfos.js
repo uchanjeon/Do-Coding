@@ -38,7 +38,9 @@ let moveToActors = (data) => {
             console.log(actor10);
             document.querySelector("#innertext").innerHTML = `
                   <p class="card-text">감독 : ${data['credits']['crew'][0]['name']}</p>
-                  <p class="card-text">출연진 : ${actor10}</p>`;
+                  <br>
+                  <p class="card-text">출연진 </p>
+                  <p class="card-text">${actor10}</p>`;
 
         
     })
@@ -88,7 +90,7 @@ let moveToInfo = (data) => {
                 <p class="card-text"> 평점 : ${data.vote_average}</p>
                 <br>
                 <p class="card-text"> 상세정보</p>
-                <p> ${data.overview}</p>`;
+                <p class="card-text"> ${data.overview}</p>`;
         
     })
 }
