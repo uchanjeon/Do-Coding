@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${apiKey}`;
 
   fetch(apiUrl)
-    .then(response => response.json())
+    .then((response) => response.json())
     .then((data) => {
       const clickedMovieId = localStorage.getItem("clickedidmovie");
       // const urlParams = new URLSearchParams(window.location.search);
