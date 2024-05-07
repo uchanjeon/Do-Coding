@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="card-text"> 평점 : ${clickedMovie.vote_average}</p>
                 <br>
                 <p class="card-text"> 상세정보</p>
-                <p> ${clickedMovie.overview}</p>`;
+                <p class="card-text"> ${clickedMovie.overview}</p>`;
 
       } else {
         console.error("Clicked movie not found in the movie list");
