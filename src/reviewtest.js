@@ -6,6 +6,8 @@ const starPoints = document.getElementById("stars");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
+
+
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
   id = idElement.value.trim();
@@ -36,6 +38,8 @@ loginButton.addEventListener("click", () => {
     return;
   }
 
+  let movieId = localStorage.getItem("clickedidmovie");
+
   if (starpoints == "select") {
     alert("별점을 선택해주세요");
     return;
@@ -45,7 +49,7 @@ loginButton.addEventListener("click", () => {
     id: id,
     pw: pw,
     starpoints: starpoints,
-    mv: "frozen",
+    mv: movieId,
     cmt: comment,
   };
   const time = Number(Date.now());
@@ -77,7 +81,7 @@ let showMovieComments = function (keys, title, list) {
     let val = window.localStorage.getItem(key);
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
-    if (val["mv"] == title) {
+    if (val["mv"] == localStorage.getItem("clickedidmovie")) {
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
