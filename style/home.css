@@ -7,6 +7,10 @@
   color: black;
 }
 
+.no_dot {
+  list-style-type: none;
+}
+
 .search {
   font-family: "Do Hyeon", sans-serif;
   height: 80px;
@@ -38,7 +42,7 @@
 }
 
 .search-btn:hover {
-  background-color: rgba(47, 87, 148, 0.414);
+  background-color: rgba(22, 57, 110, 0.414);
   color: white;
 }
 * {

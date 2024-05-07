@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       const clickedMovieId = localStorage.getItem("clickedidmovie");
-
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const clickedMovieId = urlParams.get("id");
+      console.log(clickedMovieId);
       const clickedMovie = data.results.find(
         (movie) => movie.id == clickedMovieId
       );
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">영화제목 : ${clickedMovie.title}</h5>
+              <h3 class="card-title">영화제목 : ${clickedMovie.title}</h3>
               <p class="card-text">영화 평점 : ${clickedMovie.vote_average}</p>
               <p class="card-text">영화 출시일 : ${clickedMovie.release_date}</p>
               
