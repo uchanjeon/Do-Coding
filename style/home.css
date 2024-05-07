@@ -1,3 +1,7 @@
+* {
+  background-color: rgb(148, 71, 71);
+}
+
 .header {
   width: 100vw;
   height: 10vw;
@@ -49,9 +53,6 @@
 .search-btn:hover {
   background-color: rgba(22, 57, 110, 0.414);
   color: white;
-}
-* {
-  background-color: rgb(148, 71, 71);
 }
 
 .movieCards {
