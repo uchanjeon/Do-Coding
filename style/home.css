@@ -1,3 +1,7 @@
+* {
+  background-color: rgb(148, 71, 71);
+}
+
 .header {
   width: 100vw;
   height: 10vw;
@@ -50,9 +54,6 @@
   background-color: rgba(22, 57, 110, 0.414);
   color: white;
 }
-* {
-  background-color: rgb(148, 71, 71);
-}
 
 .movieCards {
   display: grid;
@@ -70,6 +71,7 @@
   padding: 20px;
   border: double 5px;
   grid-gap: 100px;
+  cursor: pointer;
 }
 
 .movie-img {
