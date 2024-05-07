@@ -87,7 +87,7 @@ let showMovieComments = function (keys, list) {
                     <div class="idcomment" id="${key}idcomment">
                         <div class="idandstar">
                             <div class="postedid"> 작성자 : ${val["id"]} </div>
-                            <div class="starpoints" id="${key}starpoints"> ${val["starpoints"]} </div>
+                            <div class="starpoints" id="${key}starpoints"> 별점 : ${val["starpoints"]} </div>
                             <select class="editstars" name="별점" id="${key}editstars">
                                 <option value="select" selected>--select--</option>
                                 <option value="★">★</option>
@@ -138,7 +138,7 @@ showMovieComments(keys, reviewcode);
 const deleteBtn = document.querySelectorAll(".delbtn");
 deleteBtn.forEach((delBtn) => {
   delBtn.addEventListener("click", (a) => {
-    let key = a.target.id.slice(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
+    let key = a.target.id.substr(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
     let value = window.localStorage.getItem(key); // 버튼에서 가져온 key로 해당 데이터 찾아옴
     let pwValue = JSON.parse(value)["pw"];
 
