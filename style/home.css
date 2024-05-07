@@ -1,19 +1,24 @@
-.title {
-  font-family: "Do Hyeon", sans-serif;
-  height: 150px;
+.header {
+  width: 100vw;
+  height: 10vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
 }
 
-.no_dot {
-  list-style-type: none;
+.title {
+  font-family: "Do Hyeon", sans-serif;
+  min-width: 200px;
+  max-width: 800px;
+  color: black;
+  margin: auto;
+  text-align: center;
 }
 
 .search {
   font-family: "Do Hyeon", sans-serif;
-  height: 80px;
+  width: 100vw;
+  height: 10vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +30,7 @@
   font-family: "Do Hyeon", sans-serif;
   font-size: 25px;
   margin-left: 10px;
-  height: 30px;
+  height: 2vw;
   color: black;
   border-color: black;
 }
@@ -34,7 +39,7 @@
   font-family: "Do Hyeon", sans-serif;
   font-size: 25px;
   margin-left: 10px;
-  height: 30px;
+  height: 2vw;
   color: black;
   border-color: rgba(0, 0, 0, 0);
   border-radius: 20%;
@@ -49,7 +54,37 @@
   background-color: rgb(148, 71, 71);
 }
 
-.card {
+.movieCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  place-items: center;
+}
+
+.movie-card {
+  background-color: rgb(216, 167, 158);
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+  border: double 5px;
+  grid-gap: 100px;
+}
+
+.movie-img {
+  border: solid;
+}
+.movie-title {
+  background-color: rgb(216, 167, 158);
+  font-size: 1.5em;
+}
+.movie-rating {
+  background-color: rgb(216, 167, 158);
+  font-size: 1.3em; /* 글자가 너무 작아서 조금 키웠습니다. */
+}
+
+/* .card {
   width: 500px;
   margin: 20px;
   padding: 20px;
@@ -78,10 +113,4 @@
   font-size: 18px;
   color: black;
   font-weight: bold;
-}
-
-.movieCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-}
+} */
