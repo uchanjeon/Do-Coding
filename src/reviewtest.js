@@ -138,7 +138,7 @@ showMovieComments(keys, reviewcode);
 const deleteBtn = document.querySelectorAll(".delbtn");
 deleteBtn.forEach((delBtn) => {
   delBtn.addEventListener("click", (a) => {
-    let key = a.target.id.substr(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
+    let key = a.target.id.slice(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
     let value = window.localStorage.getItem(key); // 버튼에서 가져온 key로 해당 데이터 찾아옴
     let pwValue = JSON.parse(value)["pw"];
 
