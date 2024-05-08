@@ -9,7 +9,7 @@ export async function movieActors() {
     let actor10 = actors
       .map((cur, idx) => {
         if (idx < 10) {
-          return `${cur["name"]}(${cur["character"]})`;
+          return ` ${cur["name"]}(${cur["character"]})`;
         }
       })
       .slice(0, 10);
