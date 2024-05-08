@@ -79,7 +79,7 @@ let showMovieComments = function (keys, list) {
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
     if (val["mv"] == localStorage.getItem("clickedidmovie")) {
-      let valcmt = val['cmt'].replace('<br>','\n');
+      let valcmt = val['cmt'].replaceAll('<br>','\n');
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
