@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>영화</title>
-    <link href="./style/home.css" rel="stylesheet" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
-    </style>
-    <script type="module" src="./src/homeMain.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="title">
-        <h1>영화를 소개합니다</h1>
-      </div>
-    </header>
-    <div id="searchForm" class="search">
-      <label for="filterSelect"> 정렬:</label>
-      <select id="filterSelect">
-          <option value="all">전체</option>
-          <option value="name">이름순</option>
-          <option value="top_rated">평점순</option>
-          <option value="release_date">개봉일순</option>
 
-      </select>
-      <label>영화 검색 : </label>
-      <input
-        name="searchValue"
-        id="searchInput"
-        class="search-input"
-        type="text"
-        placeholder="영화 제목"
-      />
-      <button id="searchBtn" class="search-btn" type="submit">검색</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>영화</title>
+  <link href="./style/home.css" rel="stylesheet" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+  </style>
+  <script type="module" src="./src/homeMain.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>영화를 소개합니다</h1>
     </div>
-    <div>
-      <section class="movieCards"></section>
-    </div>
-  </body>
+  </header>
+  <div id="searchForm" class="search">
+    <label for="filterSelect"> 정렬 :</label>
+    <select id="filterSelect">
+      <option value="all">전체</option>
+      <option value="name">이름순</option>
+      <option value="top_rated">평점순</option>
+      <option value="release_date">개봉일순</option>
+
+    </select>
+    <label>영화 검색 : </label>
+    <input name="searchValue" id="searchInput" class="search-input" type="text" placeholder="영화 제목" />
+    <button id="searchBtn" class="search-btn" type="submit">검색</button>
+  </div>
+  <div>
+    <section class="movieCards"></section>
+  </div>
+</body>
+
 </html>
