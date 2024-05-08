@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(148, 71, 71);
+  background-color: black;
 }
 
 select {
@@ -19,7 +19,7 @@ input {
 
 .center {
   width: 1000px;
-  background-color: antiquewhite;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
 }
@@ -212,8 +212,18 @@ input {
 
 .edittext {
   width: 95%;
+  height: 60px;
   margin-left: 2.5%;
   margin-bottom: 2.5%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.editstars {
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.pwforedit {
+  border: 1px solid rgba(0, 0, 0, 0.281);
 }
 
 .deletebtn {

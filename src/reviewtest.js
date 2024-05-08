@@ -2,19 +2,19 @@ const idElement = document.getElementById("id");
 const commentElement = document.getElementById("comment");
 const pwElement = document.getElementById("pw");
 const starPoints = document.getElementById("stars");
-//const movieCode = document.getElementById("moviecode");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
 
 
+
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
-  id = idElement.value.trim();
-  pw = pwElement.value.trim();
-  comment = commentElement.value.trim();
-  starpoints = starPoints.value;
-  //mvCode = movieCode.value.trim();
+  let id = idElement.value.trim();
+  let pw = pwElement.value.trim();
+  let comment = `${commentElement.value.trim()}`;
+  comment = comment.replaceAll(/(\n|\r\n)/g, "<br>");
+  let starpoints = starPoints.value;
   // Id 유효성 검사
   if (!id) {
     alert("아이디를 입력해주세요.");
@@ -26,11 +26,6 @@ loginButton.addEventListener("click", () => {
     alert("비밀번호는 4자 이상 입력해주세요");
     return;
   }
-  //영화의ID 유효성 검사 삭제예정이지만 test할때 입력안하면 댓글안생겨서 해봤음
-  // if (!mvCode || !"frozen") {
-  //     alert("영화 제목을 바르게 입력해주세요")
-  //     return;
-  // }
 
   //comment 유효성 검사
   if (!comment) {
@@ -55,17 +50,19 @@ loginButton.addEventListener("click", () => {
   const time = Number(Date.now());
   localStorage.setItem(JSON.stringify(time), JSON.stringify(userInfo));
   alert("저장완료");
+  console.log(comment);
   window.location.reload();
 });
 
-//엔터 쳐도 클릭과 같은효과
-review.forEach((i) => {
-  i.addEventListener("keydown", (e) => {
-    if (e.code == "Enter") {
+//리뷰에서 enter > 클릭이벤트, shift+enter > 엔터
+commentElement.addEventListener("keydown", (e) => {
+  if (e.keyCode ===13) {
+    if (!e.shiftKey) {
       loginButton.click();
     }
-  });
+  }
 });
+
 
 //localStorage 데이터 key값을 key라는 변수에 저장, 정렬
 const keys = Object.keys(window.localStorage);
@@ -82,6 +79,7 @@ let showMovieComments = function (keys, list) {
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
     if (val["mv"] == localStorage.getItem("clickedidmovie")) {
+      let valcmt = val['cmt'].replaceAll('<br>','\n');
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
@@ -100,7 +98,7 @@ let showMovieComments = function (keys, list) {
                         <hr>
                         <div id="${key}postedcmt" class="postedcmt"> ${val["cmt"]} </div>
                         <div class="edittextbox" id="${key}edittext">
-                            <textarea type="text" class="edittext" id="${key}editarea">${val["cmt"]}</textarea>
+                            <textarea type="text" class="edittext" id="${key}editarea">${valcmt}</textarea>
                         </div>
                     </div>
                     <div class="deletebtn" id="${key}deletebtn">
@@ -210,6 +208,7 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
     let editedcomment = document.getElementById(key + "editarea").value;
     let editedstar = document.getElementById(key + "editstars").value;
     if (pwValue == inputPw && editedstar != "select") {
+      editedcomment = editedcomment.replaceAll(/(\n|\r\n)/g, "<br>");
       let userInfo = {
         id: idValue,
         pw: pwValue,

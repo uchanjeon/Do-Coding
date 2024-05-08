@@ -10,7 +10,7 @@ async function fetchMovieData2() {
     };
 
     const clickedMovieId = localStorage.getItem("clickedidmovie");
-    let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-en`
+    let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-US`
 
     fetch(address, options)
         .then(response => response.json())
@@ -52,7 +52,6 @@ fetchMovieData2();
 
 
 //원래대로
-//추가기능 - 출연진 / 예매하기 기능 다른 api에서 받아오기
 async function fetchMovieData() {
     const options = {
         method: "GET",
@@ -72,8 +71,6 @@ async function fetchMovieData() {
 
 fetchMovieData();
 
-
-//해당 영화값 찾기
 let findMovie = (data) => {
     const clickedMovieId = localStorage.getItem("clickedidmovie");
     const clickedMovie = data.results.find(
