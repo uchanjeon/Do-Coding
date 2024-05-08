@@ -15,7 +15,7 @@ async function fetchMovieData2() {
   fetch(address, options)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      //   console.log(data);
       moveToActors(data);
       moveToReserve(data);
     });
