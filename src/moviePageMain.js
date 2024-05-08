@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       const clickedMovieId = localStorage.getItem("clickedidmovie");
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const clickedMovieId = urlParams.get("id");
       console.log(clickedMovieId);
       const clickedMovie = data.results.find(
         (movie) => movie.id == clickedMovieId
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <br>
                 <p class="card-text"> 상세정보</p>
                 <p class="card-text"> ${clickedMovie.overview}</p>`;
-
       } else {
         console.error("Clicked movie not found in the movie list");
       }
