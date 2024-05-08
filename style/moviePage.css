@@ -18,7 +18,13 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+.info2 {
+  background-color: yellow;
+  width: 930px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .reviewsection {
   width: 930px;
   margin-left: auto;
