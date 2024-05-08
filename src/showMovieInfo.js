@@ -4,7 +4,7 @@ import { fetchData } from "./nowPlayingAPI.js";
 export const showMovieInfo = async () => {
   const address = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
   const data = await fetchData(address); //data.results
-  let movies = data.results;
+  const movies = data.results;
   const clickedMovieId = localStorage.getItem("clickedidmovie");
   const clickedMovie = movies.find((movie) => movie.id == clickedMovieId);
   if (clickedMovie) {
