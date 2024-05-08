@@ -208,6 +208,7 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
     let editedcomment = document.getElementById(key + "editarea").value;
     let editedstar = document.getElementById(key + "editstars").value;
     if (pwValue == inputPw && editedstar != "select") {
+      editedcomment = editedcomment.replaceAll(/(\n|\r\n)/g, "<br>");
       let userInfo = {
         id: idValue,
         pw: pwValue,
