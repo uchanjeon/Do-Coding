@@ -8,17 +8,14 @@ async function fetchMovieData2() {
                 "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmFmYTFlODI1OGYwZDc3MWEwMzRjOWM3OTNiNjgzMCIsInN1YiI6IjY2MjZmZDQ4MTc2YTk0MDE3ZjgxMmVjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NKjXh9Bx4UxPLwQzr6nBDrLrSEAQm89Mqcv8XlKgXms",
         },
     };
-
     const clickedMovieId = localStorage.getItem("clickedidmovie");
     let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-US`
 
     fetch(address, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             moveToActors(data);
             moveToReserve(data);
-
         })
 }
 
@@ -28,7 +25,6 @@ let moveToReserve = (data) => {
     });
 }
 let moveToActors = (data) => {
-
     let actors = data['credits']['cast']
     let actor10 = actors.map((cur, idx) => {
         if (idx < 10) {
@@ -41,51 +37,7 @@ let moveToActors = (data) => {
         <p class="card-text">${data['credits']['crew'][0]['name']}</p>
         <p class="card-text">출연진 </p>
         <p class="card-text">${actor10}</p>`;
-
-
-
 }
 
 fetchMovieData2();
 
-
-
-
-//원래대로
-async function fetchMovieData() {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmFmYTFlODI1OGYwZDc3MWEwMzRjOWM3OTNiNjgzMCIsInN1YiI6IjY2MjZmZDQ4MTc2YTk0MDE3ZjgxMmVjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NKjXh9Bx4UxPLwQzr6nBDrLrSEAQm89Mqcv8XlKgXms",
-        },
-    };
-    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-        .then(response => response.json())
-        .then(data => {
-            let movie = findMovie(data);
-            moveToInfo(movie);
-        });
-}
-
-fetchMovieData();
-
-let findMovie = (data) => {
-    const clickedMovieId = localStorage.getItem("clickedidmovie");
-    const clickedMovie = data.results.find(
-        (movie) => movie.id == clickedMovieId
-    )
-    return clickedMovie;
-}
-
-let moveToInfo = (data) => {
-    document.querySelector("#info").addEventListener('click', () => {
-
-        document.querySelector("#nav-home").innerHTML = `
-                <p class="card-text">개봉일 : ${data.release_date}</p>
-                <p class="card-text"> 평점 : ${data.vote_average}</p>
-                <p class="card-text"> ${data.overview}</p>`;
-
-    })
-}
