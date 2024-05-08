@@ -21,10 +21,9 @@ function displayMovieInfo(movie) {
   document.querySelector("#cardtitle").innerHTML = `
     ${movie.title}`;
 
-  document.querySelector("#innertext").innerHTML = `
+  document.querySelector("#nav-home").innerHTML = `
             <p class="card-text">개봉일 : ${movie.release_date}</p>
             <p class="card-text"> 평점 : ${movie.vote_average}</p>
-            <br>
             <p class="card-text"> 상세정보</p>
             <p class="card-text"> ${movie.overview}</p>`;
 }
