@@ -23,27 +23,27 @@ async function fetchMovieData2() {
 }
 
 let moveToReserve = (data) => {
-    document.querySelector("#reserve").addEventListener('click', () => {
+    document.querySelector("#nav-contact-tab").addEventListener('click', () => {
         window.open(data['homepage']);
     });
 }
 let moveToActors = (data) => {
-        document.querySelector("#actors").addEventListener('click', () => {
-            let actors = data['credits']['cast']
-            let actor10 = actors.map((cur, idx)=> {
-                if (idx<10) {
-                    return cur["name"];
-                }
-            }).slice(0,10);
-            console.log(actor10);
-            document.querySelector("#innertext").innerHTML = `
-                  <p class="card-text">감독 : ${data['credits']['crew'][0]['name']}</p>
-                  <br>
-                  <p class="card-text">출연진 </p>
-                  <p class="card-text">${actor10}</p>`;
 
-        
-    })
+    let actors = data['credits']['cast']
+    let actor10 = actors.map((cur, idx) => {
+        if (idx < 10) {
+            return cur["name"];
+        }
+    }).slice(0, 10);
+    console.log(actor10);
+    document.querySelector("#nav-profile").innerHTML = `
+        <p class="card-text">감독</p>
+        <p class="card-text">${data['credits']['crew'][0]['name']}</p>
+        <p class="card-text">출연진 </p>
+        <p class="card-text">${actor10}</p>`;
+
+
+
 }
 
 fetchMovieData2();
@@ -80,14 +80,12 @@ let findMovie = (data) => {
 }
 
 let moveToInfo = (data) => {
-        document.querySelector("#info").addEventListener('click', () => {
+    document.querySelector("#info").addEventListener('click', () => {
 
-        document.querySelector("#innertext").innerHTML = `
+        document.querySelector("#nav-home").innerHTML = `
                 <p class="card-text">개봉일 : ${data.release_date}</p>
                 <p class="card-text"> 평점 : ${data.vote_average}</p>
-                <br>
-                <p class="card-text"> 상세정보</p>
                 <p class="card-text"> ${data.overview}</p>`;
-        
+
     })
 }

@@ -20,11 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#cardtitle").innerHTML = `
         ${clickedMovie.title}`;
 
-        document.querySelector("#innertext").innerHTML = `
+        document.querySelector("#nav-home").innerHTML = `
                 <p class="card-text">개봉일 : ${clickedMovie.release_date}</p>
                 <p class="card-text"> 평점 : ${clickedMovie.vote_average}</p>
-                <br>
-                <p class="card-text"> 상세정보</p>
                 <p class="card-text"> ${clickedMovie.overview}</p>`;
 
       } else {
