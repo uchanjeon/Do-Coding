@@ -5,9 +5,6 @@ const starPoints = document.getElementById("stars");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
-
-
-
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
   let id = idElement.value.trim();
@@ -15,6 +12,7 @@ loginButton.addEventListener("click", () => {
   let comment = `${commentElement.value.trim()}`;
   comment = comment.replaceAll(/(\n|\r\n)/g, "<br>");
   let starpoints = starPoints.value;
+  
   // Id 유효성 검사
   if (!id) {
     alert("아이디를 입력해주세요.");

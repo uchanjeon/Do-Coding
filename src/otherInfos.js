@@ -1,4 +1,3 @@
-//추가기능 - 출연진 / 예매하기 기능 다른 api에서 받아오기
 let fetchData2 = (address) => {
     const options = {
         method: "GET",
@@ -47,5 +46,3 @@ async function movieWatch() {
 
 movieActors();
 movieWatch();
-
-

@@ -15,6 +15,7 @@
   <script type="module" src="./src/moviePageMain.js"></script>
   <script type="module" src="./src/otherInfos.js"></script>
   <script type="module" src="./src/reviewtest.js"></script>
+  <script src="./src/youtube.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
       <div class="mvBtn">
       </div>
     </div>
-
+   
     <div class="main">
       <div class="info" id="bigbox1">
         <div class="movieInfo">
@@ -55,8 +56,10 @@
           </div>
         </div>
       </div>
-    </div>
-
+      <div class="info"> 
+        <h2> OFFICIAL TRAILER</h2>
+        <div id="player"></div>
+      </div>
     <div class="reviewsection">
       <div class="reviews">
         <input class="inputgroup" id="id" type="text" placeholder="닉네임">
@@ -74,8 +77,6 @@
           <input id="addbtn" class="commentbtn" type="button" value="작성완료"></button>
         </div>
       </div>
-
-
       <div id="frozen" class="postedreview">
         <h2>Review</h2>
         <div id="passwordPopup" class="pwPopup">

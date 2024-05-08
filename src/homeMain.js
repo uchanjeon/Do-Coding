@@ -9,12 +9,12 @@ createMovieCards(movies);
 
 const searchInput = document.querySelector("#searchInput");
 searchInput.focus();
-//검색버튼누르면 검색 실행
+// 검색 버튼 누르면 검색 실행
 document.querySelector("#searchBtn").addEventListener("click", (event) => {
   event.preventDefault();
   searchMovieCards(searchInput.value);
 });
-//엔터누르면 검색 실행
+// 엔터 누르면 검색 실행
 document
   .getElementById("searchInput")
   .addEventListener("keyup", (event) => pressEnter(event));

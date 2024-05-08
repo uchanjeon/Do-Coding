@@ -91,9 +91,6 @@ input {
   font-size: 15pt;
 }
 
-
-
-
 .reviewsection {
   width: 930px;
   margin-left: auto;
@@ -132,7 +129,6 @@ input {
 }
 
 #stars {
-
   grid-column: 3/4;
   grid-row: 1/2;
   width: 95%;

@@ -1,5 +1,5 @@
 export const createMovieCards = async (movies) => {
-  const cardList = document.querySelector(".movieCards"); // .은 class
+  const cardList = document.querySelector(".movieCards");
   cardList.innerHTML = movies
     .map(
       (movie) => `
