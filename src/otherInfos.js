@@ -24,7 +24,7 @@ async function fetchMovieData2() {
 
 let moveToReserve = (data) => {
     document.querySelector("#reserve").addEventListener('click', () => {
-        location.replace(data['homepage']);
+        window.open(data['homepage']);
     });
 }
 let moveToActors = (data) => {
