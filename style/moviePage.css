@@ -212,8 +212,18 @@ input {
 
 .edittext {
   width: 95%;
+  height: 60px;
   margin-left: 2.5%;
   margin-bottom: 2.5%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.editstars {
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.pwforedit {
+  border: 1px solid rgba(0, 0, 0, 0.281);
 }
 
 .deletebtn {
