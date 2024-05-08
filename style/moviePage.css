@@ -1,0 +1,305 @@
+body {
+  background-color: black;
+}
+
+select {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+textarea {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.center {
+  width: 1000px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: 35px 465px 465px 35px;
+}
+
+.homebox {
+  grid-column: 2/3;
+  align-self: center;
+  justify-self: start;
+}
+
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  margin: auto auto auto auto;
+}
+
+.info {
+  width: 930px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.movieInfo {
+  margin-top: 30px;
+  width: 930px;
+  height: 350px;
+  display: grid;
+  grid-template-columns: 1fr 2.7fr;
+  column-gap: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.205);
+}
+
+.imagesection {
+  grid-column: 1/2;
+  height: 330px;
+  align-self: center;
+  justify-self: center;
+}
+
+.image {
+  height: 330px;
+}
+
+.infotext {
+  grid-template-columns: 2/3;
+}
+
+.card-title {
+  font-size: 18pt;
+  margin-top: 15px;
+}
+
+.card-text {
+  margin-top: 10px;
+  font-size: 13pt;
+}
+
+.smalltitle {
+  font-size: 15pt;
+}
+
+.reviewsection {
+  width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reviews {
+  width: 930px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+#id {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 95%;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 0;
+  justify-self: start;
+}
+
+#pw {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 95%;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 0;
+  justify-self: center;
+}
+
+#stars {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  width: 95%;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 0;
+  justify-self: end;
+}
+
+.review {
+  grid-column: 1/4;
+  grid-row: 2/2;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.comment {
+  width: 100%;
+  height: 100px;
+  margin: auto auto auto auto;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.commentbtn {
+  margin-top: 10px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.postedreview {
+  overflow-y: scroll;
+  margin-top: 10px;
+  width: 100%;
+  height: 300px;
+}
+
+.posted {
+  width: 98%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  margin-top: 10px;
+}
+
+.idcomment {
+  margin: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.idandstar {
+  margin-top: 10px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.postedcmt {
+  width: 95%;
+  margin-top: 5px;
+  margin-left: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.edittext {
+  width: 95%;
+  height: 60px;
+  margin-left: 2.5%;
+  margin-bottom: 2.5%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.editstars {
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.pwforedit {
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.deletebtn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.delbtn {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.editbtn {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.editdonebtn {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.cancelbtn {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.pwPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 800px;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#passwordPopup h1 {
+  font-size: 20px;
+}
+
+#passwordInput {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+#passwordSubmit {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#closePopup {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.Popup_warning {
+  background-color: white;
+}
+.Popup_input {
+  background-color: white;
+}
