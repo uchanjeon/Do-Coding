@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(148, 71, 71);
+  background-color: black;
 }
 
 select {
@@ -19,7 +19,7 @@ input {
 
 .center {
   width: 1000px;
-  background-color: antiquewhite;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
 }
@@ -35,15 +35,7 @@ input {
   justify-self: start;
 }
 
-.mvBtn {
-  grid-column: 3/4;
-  align-self: center;
-  justify-self: end;
-}
 
-.mvInfoBtn {
-  font-size: 15pt;
-}
 
 .main {
   display: flex;
@@ -139,8 +131,8 @@ input {
 #stars {
   grid-column: 3/4;
   grid-row: 1/2;
-  width: 98%;
-  height: 35px;
+  width: 95%;
+  height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.281);
   border-radius: 0;
   justify-self: end;
@@ -156,7 +148,7 @@ input {
 }
 
 .comment {
-  width: 99%;
+  width: 100%;
   height: 100px;
   margin: auto auto auto auto;
   border: 1px solid rgba(0, 0, 0, 0.281);
@@ -208,8 +200,18 @@ input {
 
 .edittext {
   width: 95%;
+  height: 60px;
   margin-left: 2.5%;
   margin-bottom: 2.5%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.editstars {
+  border: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+.pwforedit {
+  border: 1px solid rgba(0, 0, 0, 0.281);
 }
 
 .deletebtn {

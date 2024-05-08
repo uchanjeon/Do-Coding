@@ -1,15 +1,12 @@
-import { fetchMovieData } from "./nowPlayingAPI.js"; //1. API를 가져온다. -> 이거 함수를 가져오는건데 그냥 거기서 실행하고 변수인 movies를 가져오는게 낫지않나?
-import { createMovieCards } from "./createMovieCards.js"; //2. 영화 카드를 생성한다. 그리고 영화 카드에 함수를 부여한다.
-import { searchMovieCards, pressEnter } from "./searchMovieCards.js";
+import { fetchMovieData } from "./nowPlayingAPI.js"; //1. API를 가져온다.
+import { createMovieCards } from "./createMovieCards.js"; //2. 영화 카드를 생성한다.
+import { searchMovieCards, pressEnter } from "./searchMovieCards.js"; // 3. 검색 함수 불러온다.
 import { sortMovies } from "./movieFilter.js"; // 정렬 기능 모듈 불러오기
 
-// 1. API를 가져온다.
 export const movies = await fetchMovieData(); //async
 
-// 2. 영화 카드를 생성한다. 그리고 영화 카드에 함수를 부여한다.
 createMovieCards(movies);
 
-// 4. 검색기능
 const searchInput = document.querySelector("#searchInput");
 searchInput.focus();
 // 검색 버튼 누르면 검색 실행
