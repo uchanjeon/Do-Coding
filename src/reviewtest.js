@@ -6,14 +6,12 @@ const starPoints = document.getElementById("stars");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
-
-
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
-  id = idElement.value.trim();
-  pw = pwElement.value.trim();
-  comment = commentElement.value.trim();
-  starpoints = starPoints.value;
+  let id = idElement.value.trim();
+  let pw = pwElement.value.trim();
+  let comment = commentElement.value.trim();
+  let starpoints = starPoints.value;
   //mvCode = movieCode.value.trim();
   // Id 유효성 검사
   if (!id) {
