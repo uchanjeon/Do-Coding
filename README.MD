@@ -21,7 +21,7 @@ JQuery를 사용하지 않고 바닐라 자바스크립트로 API로 파일을 �
 ## 5. 문제 해결 방법
 
 F12를 눌러 CONSOLE 태그에 사진과 같은 에러코드가 나온다면
-![ERROR](./assets/CORS%20Error.JPG)
+![ERROR](./assets/CORS%20Error.JPG)<br/>
 Live Server를 이용해서 실행해주세요.
 
 ## 6. 지원창구
@@ -31,9 +31,7 @@ Live Server를 이용해서 실행해주세요.
 ## 7. 외부리소스
 
 1. [TMDB API Now Playing](https://developer.themoviedb.org/reference/movie-now-playing-list)
-2. TMDB API 제작진나오는 Api
-
-3. [TMDB API Videos](https://developer.themoviedb.org/reference/movie-videos)
+2. [TMDB API Videos](https://developer.themoviedb.org/reference/movie-videos)
 
 ## 8. 참조
 
