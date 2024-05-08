@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="card-text">개봉일 : ${clickedMovie.release_date}</p>
                 <p class="card-text"> 평점 : ${clickedMovie.vote_average}</p>
                 <p class="card-text"> ${clickedMovie.overview}</p>`;
-
       } else {
         console.error("Clicked movie not found in the movie list");
       }
