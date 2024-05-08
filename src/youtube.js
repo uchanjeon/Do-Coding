@@ -12,8 +12,9 @@ let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}/videos?langu
 fetch(address, options)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data.results);
-    youtubeKey = data.results[0].key;
+    // console.log(data.results);
+    youtubeTrailer = data.results.find((movie) => movie.type === "Trailer");
+    // console.log(youtubeTrailer);
     onYouTubeIframeAPIReady();
   })
   .catch((err) => console.error(err));
@@ -26,14 +27,13 @@ const firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
 let player;
 function onYouTubeIframeAPIReady() {
-  console.log("clikced Movie Id : ", youtubeKey); //
+  // console.log("clikced Movie Id : ", youtubeTrailer.key);
   player = new YT.Player("player", {
     height: "360",
     width: "640",
-    videoId: youtubeKey,
+    videoId: youtubeTrailer.key,
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
@@ -41,13 +41,12 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-// 4. The API will call this function when the video player is ready. 기본적으로 멈춤.
+// 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  event.target.playVideo();
+  event.target.pauseVideo(); //playVideo() or pauseVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
 const done = false;
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING && !done) {
