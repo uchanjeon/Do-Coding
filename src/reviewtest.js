@@ -79,7 +79,7 @@ let showMovieComments = function (keys, list) {
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
     if (val["mv"] == localStorage.getItem("clickedidmovie")) {
-
+      let valcmt = val['cmt'].replace('<br>','\n');
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
@@ -98,7 +98,7 @@ let showMovieComments = function (keys, list) {
                         <hr>
                         <div id="${key}postedcmt" class="postedcmt"> ${val["cmt"]} </div>
                         <div class="edittextbox" id="${key}edittext">
-                            <textarea type="text" class="edittext" id="${key}editarea">${val["cmt"]}</textarea>
+                            <textarea type="text" class="edittext" id="${key}editarea">${valcmt}</textarea>
                         </div>
                     </div>
                     <div class="deletebtn" id="${key}deletebtn">
@@ -208,6 +208,7 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
     let editedcomment = document.getElementById(key + "editarea").value;
     let editedstar = document.getElementById(key + "editstars").value;
     if (pwValue == inputPw && editedstar != "select") {
+      editedcomment = editedcomment.replaceAll(/(\n|\r\n)/g, "<br>");
       let userInfo = {
         id: idValue,
         pw: pwValue,
