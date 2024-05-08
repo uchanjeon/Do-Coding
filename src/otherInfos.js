@@ -12,7 +12,7 @@ export async function movieActors() {
           return ` ${cur["name"]}(${cur["character"]})`;
         }
       })
-      .slice(0, 10);
+      .slice(0, 7);
     document.querySelector("#nav-profile").innerHTML = `
         <p class="card-text">감독</p>
         <p class="card-text">${data["credits"]["crew"][0]["name"]}</p>
