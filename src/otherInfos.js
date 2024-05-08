@@ -1,21 +1,9 @@
-let fetchData2 = (address) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmFmYTFlODI1OGYwZDc3MWEwMzRjOWM3OTNiNjgzMCIsInN1YiI6IjY2MjZmZDQ4MTc2YTk0MDE3ZjgxMmVjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NKjXh9Bx4UxPLwQzr6nBDrLrSEAQm89Mqcv8XlKgXms",
-    },
-  };
-  const response = fetch(address, options);
-  return response.then((res) => res.json());
-};
-
-const clickedMovieId = localStorage.getItem("clickedidmovie");
-let address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-US`;
+import { fetchData } from "./nowPlayingAPI.js";
 
 export async function movieActors() {
-  let data = await fetchData2(address);
+  const clickedMovieId = localStorage.getItem("clickedidmovie");
+  const address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-US`;
+  const data = await fetchData(address);
   try {
     let actors = data["credits"]["cast"];
     let actor10 = actors
@@ -36,7 +24,9 @@ export async function movieActors() {
 }
 
 export async function movieWatch() {
-  let data = await fetchData2(address);
+  const clickedMovieId = localStorage.getItem("clickedidmovie");
+  const address = `https://api.themoviedb.org/3/movie/${clickedMovieId}?append_to_response=credits&language=en-US`;
+  const data = await fetchData(address);
   try {
     document.querySelector("#nav-contact-tab").addEventListener("click", () => {
       window.open(data["homepage"]);

@@ -1,4 +1,4 @@
-export async function fetchMovieData() {
+export async function fetchData(address) {
   const options = {
     method: "GET",
     headers: {
@@ -7,11 +7,6 @@ export async function fetchMovieData() {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmFmYTFlODI1OGYwZDc3MWEwMzRjOWM3OTNiNjgzMCIsInN1YiI6IjY2MjZmZDQ4MTc2YTk0MDE3ZjgxMmVjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NKjXh9Bx4UxPLwQzr6nBDrLrSEAQm89Mqcv8XlKgXms",
     },
   };
-  const response = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-    options
-  );
-  const data = await response.json();
-  console.log("영화 정보 JSON \n", data.results);
-  return data.results;
-}
+  const response = fetch(address, options);
+  return response.then((res) => res.json());
+};

@@ -1,9 +1,11 @@
-import { fetchMovieData } from "./nowPlayingAPI.js"; //1. API를 가져온다.
+import { fetchData } from "./nowPlayingAPI.js"; //1. API를 가져온다.
 import { createMovieCards } from "./createMovieCards.js"; //2. 영화 카드를 생성한다.
 import { searchMovieCards, pressEnter } from "./searchMovieCards.js"; // 3. 검색 함수 불러온다.
 import { sortMovies } from "./movieFilter.js"; // 정렬 기능 모듈 불러오기
 
-export const movies = await fetchMovieData(); //async
+const address = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+const data = await fetchData(address); //async
+export const movies = data.results;
 
 createMovieCards(movies);
 
