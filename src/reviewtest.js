@@ -156,18 +156,18 @@ let confirmDelete = function (key, pwValue) {
     if (isDeleteDone) {
       return;
     }
+    isDeleteDone = true;
     if (pwValue == inputPw) {
       // 삭제하기 전에 한번 더 확인
-      let confirmDelete = confirm("확인을 누르면 삭제가 완료됩니다.");
-      if (confirmDelete) {
-        isDeleteDone = true;
-        window.localStorage.removeItem(key);
-        isDeleteDone=true;
-        alert("삭제 완료");
-        window.location.reload();
-      }
+      
+
+      window.localStorage.removeItem(key);
+      alert("삭제 완료");
+      window.location.reload();
+
     } else {
       alert("비밀번호가 일치하지 않습니다.");
+      closeDelete();
     }
   });
 }
@@ -178,9 +178,13 @@ let confirmDelete = function (key, pwValue) {
 // 닫기 버튼 클릭 시 팝업 레이어 닫기
 document.getElementById("closePopup").addEventListener("click", function () {
   isDeleteDone = true;
+  closeDelete();
+});
+
+let closeDelete = function() {
   document.getElementById("passwordPopup").style.display = "none";
   document.getElementById("passwordInput").value = null;
-});
+}
 
 
 
