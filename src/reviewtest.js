@@ -51,7 +51,6 @@ loginButton.addEventListener("click", () => {
   const time = Number(Date.now());
   localStorage.setItem(JSON.stringify(time), JSON.stringify(userInfo));
   alert("저장완료");
-  console.log(comment);
   window.location.reload();
 });
 
@@ -205,7 +204,6 @@ let clickEditBtn = function (a) {
   let pwValue = JSON.parse(value)["pw"];
   let movieValue = JSON.parse(value)["mv"];
   isEditDone = false;
-  console.log(isEditDone);
   doEdit(key);
   clickEditDoneBtn(key, idValue, pwValue, movieValue);
   clickCancelBtn(key);
@@ -266,6 +264,7 @@ let clickCancelBtn = function (key) {
 
 let CancelFunc = function (key) {
   isEditDone = true;
+  document.getElementById(key + "editstars").selectedIndex=0;
   document.getElementById(key + "postedcmt").style = "display:";
   document.getElementById(key + "edit").style = "display:";
   document.getElementById(key + "delete").style = "display:";
