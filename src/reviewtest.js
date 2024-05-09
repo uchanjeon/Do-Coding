@@ -5,6 +5,8 @@ const starPoints = document.getElementById("stars");
 const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
+let isEditDone = true;
+
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
   let id = idElement.value.trim();
@@ -12,7 +14,7 @@ loginButton.addEventListener("click", () => {
   let comment = `${commentElement.value.trim()}`;
   comment = comment.replaceAll(/(\n|\r\n)/g, "<br>");
   let starpoints = starPoints.value;
-  
+
   // Id 유효성 검사
   if (!id) {
     alert("아이디를 입력해주세요.");
@@ -54,7 +56,7 @@ loginButton.addEventListener("click", () => {
 
 //리뷰에서 enter > 클릭이벤트, shift+enter > 엔터
 commentElement.addEventListener("keydown", (e) => {
-  if (e.keyCode ===13) {
+  if (e.keyCode === 13) {
     if (!e.shiftKey) {
       loginButton.click();
     }
@@ -77,7 +79,7 @@ let showMovieComments = function (keys, list) {
     val = JSON.parse(val);
     //특정 영화제목을 가진 데이터만 출력
     if (val["mv"] == localStorage.getItem("clickedidmovie")) {
-      let valcmt = val['cmt'].replaceAll('<br>','\n');
+      let valcmt = val['cmt'].replaceAll('<br>', '\n');
       let temp_HTML = `
             <div class="posted">
                     <div class="idcomment" id="${key}idcomment">
@@ -162,6 +164,7 @@ deleteBtn.forEach((delBtn) => {
 // 닫기 버튼 클릭 시 팝업 레이어 닫기
 document.getElementById("closePopup").addEventListener("click", function () {
   document.getElementById("passwordPopup").style.display = "none";
+  document.getElementById("passwordInput").value = null;
 });
 
 //수정버튼
@@ -180,7 +183,8 @@ let clickEditBtn = function (a) {
   let idValue = JSON.parse(value)["id"];
   let pwValue = JSON.parse(value)["pw"];
   let movieValue = JSON.parse(value)["mv"];
-
+  isEditDone = false;
+  console.log(isEditDone);
   doEdit(key);
   clickEditDoneBtn(key, idValue, pwValue, movieValue);
   clickCancelBtn(key);
@@ -201,10 +205,14 @@ let doEdit = function (key) {
 
 //수정완료 버튼 클릭 > localStorage 반영, 새로고침
 let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
+
   document.getElementById(key + "editdone").addEventListener("click", () => {
     let inputPw = document.getElementById(key + "pwforedit").value;
     let editedcomment = document.getElementById(key + "editarea").value;
     let editedstar = document.getElementById(key + "editstars").value;
+    if (isEditDone) {
+      return;
+    }
     if (pwValue == inputPw && editedstar != "select") {
       editedcomment = editedcomment.replaceAll(/(\n|\r\n)/g, "<br>");
       let userInfo = {
@@ -216,11 +224,14 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
       };
       localStorage.setItem(key, JSON.stringify(userInfo));
       alert("수정완료");
+      isEditDone = true;
       window.location.reload();
     } else if (editedstar == "select") {
       alert("별점을 선택해주세요");
+      CancelFunc(key);
     } else {
       alert("비밀번호가 일치하지 않습니다.");
+      CancelFunc(key);
     }
   });
 };
@@ -228,14 +239,20 @@ let clickEditDoneBtn = function (key, idValue, pwValue, movieValue) {
 //수정취소 버튼 함수
 let clickCancelBtn = function (key) {
   document.getElementById(key + "cancel").addEventListener("click", () => {
-    document.getElementById(key + "postedcmt").style = "display:";
-    document.getElementById(key + "edit").style = "display:";
-    document.getElementById(key + "delete").style = "display:";
-    document.getElementById(key + "starpoints").style = "display:";
-    document.getElementById(key + "editdone").style = "display:none";
-    document.getElementById(key + "cancel").style = "display:none";
-    document.getElementById(key + "edittext").style = "display:none";
-    document.getElementById(key + "pwforedit").style = "display:none";
-    document.getElementById(key + "editstars").style = "display:none";
+    CancelFunc(key);
   });
 };
+
+let CancelFunc = function (key) {
+  isEditDone = true;
+  document.getElementById(key + "postedcmt").style = "display:";
+  document.getElementById(key + "edit").style = "display:";
+  document.getElementById(key + "delete").style = "display:";
+  document.getElementById(key + "starpoints").style = "display:";
+  document.getElementById(key + "editdone").style = "display:none";
+  document.getElementById(key + "cancel").style = "display:none";
+  document.getElementById(key + "edittext").style = "display:none";
+  document.getElementById(key + "pwforedit").style = "display:none";
+  document.getElementById(key + "editstars").style = "display:none";
+  document.getElementById(key + "pwforedit").value = null;
+}
