@@ -102,7 +102,7 @@ let showMovieComments = function (keys, list) {
                     <div class="deletebtn" id="${key}deletebtn">
                         <input type="button" class="editbtn" id="${key}edit" value="수정">
                         <input type="button" class="delbtn" id="${key}delete" value="삭제">
-                        <input type="text" class="pwforedit" id="${key}pwforedit" placeholder="비밀번호">
+                        <input type="password" class="pwforedit" id="${key}pwforedit" placeholder="비밀번호">
                         <input type="button" class="editdonebtn" id="${key}editdone" value="완료">
                         <input type="button" class="cancelbtn" id="${key}cancel" value="취소">
                     </div>
