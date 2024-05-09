@@ -6,6 +6,7 @@ const loginButton = document.getElementById("addbtn");
 const review = document.querySelectorAll(".reviews");
 
 let isEditDone = true;
+let isDeleteDone = true;
 
 //확인버튼 클릭 > local storage에 저장
 loginButton.addEventListener("click", () => {
@@ -139,33 +140,49 @@ deleteBtn.forEach((delBtn) => {
     let key = a.target.id.substr(0, 13); // 버튼의 id에 key값(타임스탬프)을 넣어놓은상태
     let value = window.localStorage.getItem(key); // 버튼에서 가져온 key로 해당 데이터 찾아옴
     let pwValue = JSON.parse(value)["pw"];
-
+    isDeleteDone = false;
     document.getElementById("passwordPopup").style.display = "block";
 
-    // .delbtn 버튼 클릭 시 팝업레이어를 불러옴
-    document.getElementById("passwordSubmit").addEventListener("click", () => {
-      // 입력한 비밀번호를 가져옴
-      let inputPw = document.getElementById("passwordInput").value;
-      // 입력한 비밀번호와 저장된 비밀번호를 비교하여 일치할 경우에만 삭제 기능 실행
-      if (pwValue == inputPw) {
-        // 삭제하기 전에 한번 더 확인
-        let confirmDelete = confirm("확인을 누르면 삭제가 완료됩니다.");
-        if (confirmDelete) {
-          window.localStorage.removeItem(key);
-          alert("삭제 완료");
-          window.location.reload();
-        }
-      } else {
-        alert("비밀번호가 일치하지 않습니다.");
-      }
-    });
+    confirmDelete(key, pwValue);
+
   });
 });
+
+let confirmDelete = function (key, pwValue) {
+  document.getElementById("passwordSubmit").addEventListener("click", () => {
+    // 입력한 비밀번호를 가져옴
+    let inputPw = document.getElementById("passwordInput").value;
+    // 입력한 비밀번호와 저장된 비밀번호를 비교하여 일치할 경우에만 삭제 기능 실행
+    if (isDeleteDone) {
+      return;
+    }
+    if (pwValue == inputPw) {
+      // 삭제하기 전에 한번 더 확인
+      let confirmDelete = confirm("확인을 누르면 삭제가 완료됩니다.");
+      if (confirmDelete) {
+        isDeleteDone = true;
+        window.localStorage.removeItem(key);
+        isDeleteDone=true;
+        alert("삭제 완료");
+        window.location.reload();
+      }
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  });
+}
+
+
+
+
 // 닫기 버튼 클릭 시 팝업 레이어 닫기
 document.getElementById("closePopup").addEventListener("click", function () {
+  isDeleteDone = true;
   document.getElementById("passwordPopup").style.display = "none";
   document.getElementById("passwordInput").value = null;
 });
+
+
 
 //수정버튼
 const editBtn = document.querySelectorAll(".editbtn");
